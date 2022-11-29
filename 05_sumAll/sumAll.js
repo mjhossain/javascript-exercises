@@ -1,21 +1,23 @@
-const sumAll = function(start, times) {
+const sumAll = function(min, max) {
     let sum = 0;
-
-    if(typeof(times) != Number) {
-        console.log('this ran')
+    if (!Number.isInteger(min) || !Number.isInteger(max)) {
+        return 'ERROR'
+    }
+    if(min < 0 || max < 0) {
         return 'ERROR';
-    } 
+    }
         
-    if(start > times) {
-        for(i = times; i <= start; i++) {
-            return sum += i;
-        }
-    } else if (start < times) {
-        for(i = start; i <= times; i++) {
-            return sum += i;
-        }
+    if(min > max) {
+        let temp = min
+        min = max
+        max = temp
+    }
+
+    for (let i = min; i < max +1; i++) {
+        sum += i;
     }
     
+    return sum
    
 
 };
